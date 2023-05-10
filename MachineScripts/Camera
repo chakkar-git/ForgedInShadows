@@ -1,1 +1,42 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class PictureCam : Machine
+{
+
+
+    //private Texture RenderResult;
+    public RenderTexture camResult;
+
+    public override void Use(Document Doc)
+    {
+        base.Use(Doc);
+        //play flash effect
+       
+
+
+        Image mugShot = Doc.gameObject.transform.Find("MugShot").gameObject.GetComponent<Image>();
+        if (mugShot != null)            //+if mug shot is needed
+        {
+            //if Document is attatched
+           
+            document.GetComponent<Document>().mugShot = camResult;
+            Doc.SetMugShot(Doc);
+           
+        }
+        else { //this document doesent need a mugshot
+         }
+
+    }
+
+
+    public void TakePic()
+    {
+
+
+    }
+
+}
 
