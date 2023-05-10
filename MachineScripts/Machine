@@ -1,1 +1,45 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+//using UnityEngine.XR;
+using UnityEngine.XR.Interaction.Toolkit;
+using TMPro;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
+using System.Xml.Linq;
+
+public class Machine : MonoBehaviour
+{
+
+    public TextMeshProUGUI CRTConsole;
+    public GameObject document;
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        CRTConsole.text = collision.gameObject.name;
+        if (collision.collider == document.GetComponent<Collider>())
+        {
+            document.GetComponent<XRGrabInteractable>().enabled = false;//Grab interactable turn off
+            document.GetComponent<Rigidbody>().isKinematic = true;
+
+            document.gameObject.transform.position = collision.collider.transform.position;            //set possition
+                                                                                            //activate machine
+            Use(document.GetComponent<Document>());                                         //use machine
+                                                                                            //grab interactable
+            document.GetComponent<XRGrabInteractable>().enabled = true;//Grab interactable turn on
+
+
+        }
+    }
+
+    public void Start()
+    {
+        CRTConsole.text = "collision detection";
+
+    }
+    public virtual void Use(Document document)
+    {
+        //play UseAnim
+        //play UseSound
+    }
+}
 
