@@ -1,1 +1,38 @@
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+
+public class DriversLisence : Document
+{
+    public char LisenceClass;
+    public int[] LicenseNumber = new int[4];
+
+
+
+
+    public void SetLicNo(Document Doc)
+    {
+        Transform T = Doc.gameObject.transform;
+        TMP_Text licNumber = T.Find("LicenceNumber").gameObject.GetComponent<TextMeshProUGUI>();
+
+        if (licNumber != null)
+        {
+            licNumber.text = LicenseNumber[0] + "-" + LicenseNumber[1] + "-" + LicenseNumber[2] + "-" + LicenseNumber[3];
+        }
+
+    }
+    public void SetVClass(Document Doc)
+    {
+        Transform T = Doc.gameObject.transform;
+        TMP_Text vClass = T.Find("VClass").gameObject.GetComponent<TextMeshProUGUI>();
+
+        if (vClass != null)
+        {
+            vClass.text = "Class: "+LisenceClass;  
+        }
+
+    }
+
+}
 
