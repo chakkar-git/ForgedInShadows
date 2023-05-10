@@ -1,1 +1,46 @@
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+
+public class Document : MonoBehaviour
+{
+    public string Name;
+    public int[] DoB = new int[3];
+    public Texture mugShot;
+    public Texture signature;
+    public Machine[] neededMachines;
+
+
+    public void setDocValues(Document Doc)
+    {
+        Transform T = Doc.gameObject.transform;
+
+        TMP_Text heigh = T.Find("Height").gameObject.GetComponent<TextMeshProUGUI>();
+        TMP_Text Name = T.Find("Name").gameObject.GetComponent<TextMeshProUGUI>();
+
+
+    }
+
+    public void SetDoB(Document Doc){
+        Transform T = Doc.gameObject.transform;
+        TMP_Text DoBText = T.Find("DOB").gameObject.GetComponent<TextMeshProUGUI>();
+        if (DoBText != null)  DoBText.text = "DoB: "+ DoB[0]+'/'+ DoB[1]+'/'+ DoB[2];
+    }
+    public void SetName(Document Doc)
+    {
+        Transform T = Doc.gameObject.transform;
+        TMP_Text NameText = T.Find("Name").gameObject.GetComponent<TextMeshProUGUI>();
+        if (NameText != null) NameText.text = "Name: "+Name;
+
+
+    }
+    public void SetMugShot(Document Doc)
+    {
+        Transform T = Doc.gameObject.transform;
+        Image BugShotImage = T.Find("Name").gameObject.GetComponent<Image>();
+        if (BugShotImage != null) BugShotImage.sprite = Sprite.Create(new Texture2D(mugShot.width, mugShot.height, TextureFormat.RGBA32, false), new Rect(0.0f, 0.0f, mugShot.width, mugShot.height), new Vector2(0.5f, 0.5f), 100.0f); ;
+    }
+
+}
 
